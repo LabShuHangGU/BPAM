@@ -23,7 +23,7 @@ Download  [FiveK (480p)](https://github.com/HuiZeng/Image-Adaptive-3DLUT), [Five
 
 Download the code:
 ```
-git clone https://github.com/LTH14/mar.git
+git clone https://github.com/LabShuHangGU/BPAM.git
 cd bpam
 ```
 
