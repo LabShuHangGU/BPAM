@@ -1,17 +1,17 @@
-## Learning Pixel-adaptive Multi-layer Perceptrons for Real-time Image Enhancement (ICCV 2025) <br>
+## Learning Pixel-adaptive Multi-layer Perceptrons for Real-time Image Enhancement (ICCV 2025)
 
 <p align="center">
   <a href="https://arxiv.org/abs/2507.12135">
     <img alt="arXiv" src="https://img.shields.io/badge/arXiv%20paper-2507.12135-b31b1b.svg">
   </a>
-  
+  &nbsp;
   <a href="https://github.com/LabShuHangGU/BPAM">
     <img alt="GitHub Stars" src="https://img.shields.io/github/stars/LabShuHangGU/BPAM?style=social">
   </a>
 </p>
 
 <p align="center">
-  <img src="figures/framework.png" width="720">
+  <img src="figures/framework.png" width="720" alt="Method Framework">
 </p>
 
 This repository is an official implementation of the paper "Learning Pixel-adaptive Multi-layer Perceptrons for Real-time Image Enhancement", ICCV, 2025.
