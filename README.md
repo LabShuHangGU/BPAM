@@ -4,6 +4,8 @@
   <a href="https://arxiv.org/abs/2507.12135">
     <img alt="arXiv" src="https://img.shields.io/badge/arXiv%20paper-2507.12135-b31b1b.svg">
   </a>
+</p>
+<p align="center">
   <a href="https://github.com/LabShuHangGU/BPAM">
     <img alt="GitHub Stars" src="https://img.shields.io/github/stars/LabShuHangGU/BPAM?style=social">
   </a>
