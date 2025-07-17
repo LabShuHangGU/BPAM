@@ -1,7 +1,14 @@
 ## Learning Pixel-adaptive Multi-layer Perceptrons for Real-time Image Enhancement (ICCV 2025) <br>
 
-[![arXiv](https://img.shields.io/badge/arXiv%20paper-2507.12135-b31b1b.svg)](https://arxiv.org/abs/2507.12135)&nbsp;
-[![GitHub Stars](https://img.shields.io/github/stars/LabShuHangGU/BPAM?style=social)](https://github.com/LabShuHangGU/BPAM)
+<p align="center">
+  <a href="https://arxiv.org/abs/2507.12135">
+    <img alt="arXiv" src="https://img.shields.io/badge/arXiv%20paper-2507.12135-b31b1b.svg">
+  </a>
+  &nbsp;
+  <a href="https://github.com/LabShuHangGU/BPAM">
+    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/LabShuHangGU/BPAM?style=social">
+  </a>
+</p>
 
 <p align="center">
   <img src="figures/framework.png" width="720">
