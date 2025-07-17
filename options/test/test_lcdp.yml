@@ -1,0 +1,57 @@
+# general settings
+name: lcdp
+
+model_type: TestModel
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+
+  test:
+    name: tone_val
+    type: PairedImageDataset
+
+    dataroot_gt: ~
+    dataroot_lq: ~
+
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+      # type: lmdb
+      # type: txt
+
+# network structures
+network_g:
+  type: BPAM
+  ci: 3
+  grid_range: 8    #2
+  co_1: 4
+  co_2: 9
+  kernel: 1
+  layer: 2
+  width: 16
+  enc_blks: [2, 2, 2]
+  dec_blks: [2, 2, 2]
+  middle_blk_num: 2
+  
+
+# network_d:
+#   type: Discriminator
+
+# path
+path:
+  root: results
+  pretrain_network_g: pretrained/lcdp.pth
+  strict_load_g: true
+
+val:
+  save_img: false
+  suffix: ~  # add suffix to saved images, if None, use exp name
+  visuals: [output, gt]
+  
+  metrics:
+    psnr:                    
+      type: psnr             
+  #   ssim:                    
+  #     type: ssim

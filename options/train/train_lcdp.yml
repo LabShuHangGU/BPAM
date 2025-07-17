@@ -1,0 +1,165 @@
+# general settings
+name: lcdp
+
+model_type: TrainModel
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: FdX6P
+    type: PairedImageDataset
+    
+    dataroot_gt: ~
+    dataroot_lq: ~
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+      # type: lmdb
+      # type: txt
+
+    if_fix_size: false # training will be slower if the data shape not fixed (both num_gpu and batch_size need to be 1)
+    gt_size: 1080  # training size
+    use_flip: true
+    use_rot: true
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 8   #8    #16
+    batch_size_per_gpu: 1
+    dataset_enlarge_ratio: 1    
+    pin_memory: true
+
+  val:
+    name: FdX6P_val
+    type: PairedImageDataset
+    
+    dataroot_gt: ~
+    dataroot_lq: ~
+  
+
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+      # type: lmdb
+      # type: txt
+
+# network structures
+network_g:
+  type: BPAM
+  ci: 3
+  grid_range: 8    #2
+  scale_factor: 0.5
+  co_1: 4
+  co_2: 9
+  kernel: 1
+  layer: 2
+  width: 16
+  enc_blks: [2, 2, 2]
+  dec_blks: [2, 2, 2]
+  middle_blk_num: 2
+
+# network_d:
+#   type: Discriminator
+
+path:
+  root: checkpoint
+  pretrain_network_g: ~
+  strict_load_g: true
+  resume_state: ~
+  
+
+# training settings
+train:
+  ema_decay: 0.999
+  optim_g:
+    type: Adam
+    lr: !!float 4e-4
+    weight_decay: 0
+    betas: [0.9, 0.99]
+  
+  # scheduler:
+  #   type: MultiStepLR
+  #   milestones: [196000,197000]
+  #   gamma: 0.5
+  scheduler:
+    type: CosineAnnealingRestartLR
+    periods: [120000]
+    restart_weights: [1]
+    eta_min: !!float 2e-6  
+
+  total_iter: 120000
+  warmup_iter: -1  # no warm up
+
+  # losses
+  # pixel_opt:
+  #   type: MSELoss
+  #   loss_weight: 1
+  #   reduction: mean
+  base_opt:
+    type: MSELoss
+    loss_weight: 1
+    reduction: mean
+  perceptual_opt:
+    type: PerceptualLoss
+    layer_weights:
+      #'conv5_4': 1  # before relu
+      'conv1_1': 0.1
+      'conv2_1': 0.1
+      'conv3_1': 1.0
+      'conv4_1': 1.0
+      'conv5_1': 1.0
+    vgg_type: vgg19
+    use_input_norm: true
+    range_norm: false
+    perceptual_weight: 0.01
+    style_weight: 1e-3
+    criterion: l1
+  ssim_opt:
+    type: SSIMLoss
+    loss_weight: 0.5
+  # lpips_opt:
+  #   type: LpipsLoss
+  #   loss_weight: 0.01
+  # delta_opt:
+  #   type: DeltaE_loss
+  #   loss_weight: 0.005
+  # base_color_opt:
+  #   type: LabLoss
+  #   mode: l1
+  #   loss_weight: 0.005
+  #   reduction: mean
+  
+  # grid_opt:
+  #   type: GridLoss
+  #   loss_weight: 0.05
+  # net_d_iters: 1
+  # net_d_init_iters: 0
+
+# validation settings
+val:
+  val_freq: 5000
+  save_img: false  #true
+  visuals: [gt, output]
+  # visuals: [lq, base, gt, output]
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 4
+      test_y_channel: false
+
+# logging settings
+logger:
+  print_freq: 100
+  save_checkpoint_freq: 1000
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500

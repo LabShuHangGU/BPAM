@@ -1,0 +1,58 @@
+# general settings
+name: tonemapping_480p
+
+model_type: TestModel
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+
+  test:
+    name: tone_val
+    type: PairedImageDataset_ToneMapping
+    
+    datatxt_gt: ~
+    datatxt_lq: ~
+
+    filename_tmpl: '{}'
+    io_backend:
+      # type: disk
+      # type: lmdb
+      type: txt
+
+# network structures
+network_g:
+  type: BPAM
+  ci: 3
+  grid_range: 8    #2
+  scale_factor: 0.5
+  co_1: 4
+  co_2: 9
+  kernel: 3
+  layer: 4
+  width: 16
+  enc_blks: [2, 2, 2]
+  dec_blks: [2, 2, 2]
+  middle_blk_num: 2
+  
+# network_d:
+#   type: Discriminator
+
+# path
+path:
+  root: results
+  pretrain_network_g: pretrained/FiveK_tonemapping_480p.pth
+  strict_load_g: true
+
+val:
+  save_img: false
+  suffix: ~  # add suffix to saved images, if None, use exp name
+  # visuals: [lq, lq_gg, base, gt, output]
+  visuals: [output, gt]
+  
+  metrics:
+    psnr:                    
+      type: psnr             
+  #   ssim:                    
+  #     type: ssim

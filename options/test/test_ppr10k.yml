@@ -1,0 +1,70 @@
+# general settings
+name: ppr_c
+
+model_type: TestModel
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+
+  test:
+    name: tone_val
+    type: PPRDataset_Val
+
+    dataroot_gt: ~
+    dataroot_lq: ~
+    dataroot_mask: ~
+
+    filename_tmpl: '{}'
+    io_backend:
+      # type: disk
+      # type: lmdb
+      type: disk
+
+# network structures
+network_g:
+  type: BPAM_PPR
+  ci: 4
+  grid_range: 12    #2
+  scale_factor: 1
+  co_1: 4
+  co_2: 9
+  kernel: 3
+  layer: 4
+  width: 32
+  enc_blks: [2, 2, 2, 2]
+  dec_blks: [2, 2, 2, 2]
+  middle_blk_num: 4
+
+# network_d:
+#   type: Discriminator
+
+# path
+path:
+  root: results
+  pretrain_network_g: pretrained/PPR10K_c.pth
+  strict_load_g: true
+
+val:
+  save_img: false
+  suffix: ~  # add suffix to saved images, if None, use exp name
+  # visuals: [lq, lq_gg, base, gt, output]
+  visuals: [output, gt]
+  
+  # metrics:
+  #   psnr:
+  #     type: calculate_psnr
+  #     crop_border: 4
+  #     test_y_channel: false
+  #   ssim:
+  #     type: calculate_ssim
+  #     crop_border: 0
+  #     test_y_channel: false
+  metrics:
+    psnr:                    
+      type: psnr             
+    # ssim:                    
+    #   type: ssim
+
+# metric_type: psnr
