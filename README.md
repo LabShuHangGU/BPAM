@@ -12,7 +12,7 @@ This repository is an official implementation of the paper "Learning Pixel-adapt
 ## Preparation
 
 ### Dataset
-Download  [FiveK (480p)](https://github.com/HuiZeng), [FiveK(4K)](https://github.com/fengzhang427/LLF-LUT), [PPR10K](https://github.com/csjliang/PPR10K), [LCDP](https://www.whyy.site/paper/lcdp) dataset, and place them in your `./datasets`.
+Download  [FiveK (480p)](https://github.com/HuiZeng/Image-Adaptive-3DLUT), [FiveK(4K)](https://github.com/fengzhang427/LLF-LUT), [PPR10K](https://github.com/csjliang/PPR10K), [LCDP](https://www.whyy.site/paper/lcdp) dataset, and place them in your `./datasets`.
 
 ### Environment
 
