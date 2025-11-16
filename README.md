@@ -3,7 +3,7 @@
 </h1>
 
 
-[Paper](https://openaccess.thecvf.com/content/ICCV2025/papers/Lou_Learning_Pixel-adaptive_Multi-layer_Perceptrons_for_Real-time_Image_Enhancement_ICCV_2025_paper.pdf)
+[[Paper]](https://openaccess.thecvf.com/content/ICCV2025/papers/Lou_Learning_Pixel-adaptive_Multi-layer_Perceptrons_for_Real-time_Image_Enhancement_ICCV_2025_paper.pdf)
 [![GitHub Stars](https://img.shields.io/github/stars/LabShuHangGU/BPAM?style=social)](https://github.com/LabShuHangGU/BPAM)
 
 </div>
