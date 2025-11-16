@@ -3,7 +3,7 @@
 </h1>
 
 
-[![arXiv](https://img.shields.io/badge/arXiv-2507.12135-b31b1b.svg)](https://arxiv.org/pdf/2507.12135)
+[![Paper](https://img.shields.io/badge/arXiv-2507.12135-b31b1b.svg)](https://openaccess.thecvf.com/content/ICCV2025/papers/Lou_Learning_Pixel-adaptive_Multi-layer_Perceptrons_for_Real-time_Image_Enhancement_ICCV_2025_paper.pdf))
 [![GitHub Stars](https://img.shields.io/github/stars/LabShuHangGU/BPAM?style=social)](https://github.com/LabShuHangGU/BPAM)
 
 </div>
